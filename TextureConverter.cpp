@@ -27,14 +27,15 @@ HRESULT result;
 void TextureConverter::ConvertTextureWICToDDS(const std::string& filePath)
 {
 	LoadWICTextureFromFile(filePath);
-	SaveDDSTextureToFile();
+//	SaveDDSTextureToFile();
 }
 
-void TextureConverter::LoadWICTextureFromFile(const std::string& filepath)
+void TextureConverter::LoadWICTextureFromFile(const std::string& filePath)
 {
-	std::wstring wfilePath = ConvertMultiByteStringToWideString(filepath);
+	std::wstring wfilePath = ConvertMultiByteStringToWideString(filePath);
 	result = LoadFromWICFile(wfilePath.c_str(), WIC_FLAGS_NONE, &metadata_, scratchImage_);
 	assert(SUCCEEDED(result));
+
 	SeparateFilePath(wfilePath);
 }
 
@@ -87,14 +88,14 @@ void TextureConverter::SeparateFilePath(const std::wstring& filePath)
 	fileName_ = exceptExt;
 }
 
-void TextureConverter::SaveDDSTextureToFile()
-{
-	metadata_.format = MakeSRGB(metadata_.format);
-	HRESULT result;
-
-	std::wstring filePath = directoryPath_ + fileName_ + L".dds";
-
-	result = SaveToDDSFile(scratchImage_.GetImages(), scratchImage_.GetImageCount(),
-		metadata_, DDS_FLAGS_NONE, filePath.c_str());
-	assert(SUCCEEDED(result));
-}
+//void TextureConverter::SaveDDSTextureToFile()
+//{
+//	metadata_.format = MakeSRGB(metadata_.format);
+//	HRESULT result;
+//
+//	std::wstring filePath = directoryPath_ + fileName_ + L".dds";
+//
+//	result = SaveToDDSFile(scratchImage_.GetImages(), scratchImage_.GetImageCount(),
+//		metadata_, DDS_FLAGS_NONE, filePath.c_str());
+//	assert(SUCCEEDED(result));
+//}

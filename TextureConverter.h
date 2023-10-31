@@ -5,7 +5,7 @@ class TextureConverter
 public:
 	void ConvertTextureWICToDDS(const std::string& filePath);
 private:
-	void LoadWICTextureFromFile(const std::string& filepath);
+	void LoadWICTextureFromFile(const std::string& filePath);
 private:
 	static std::wstring ConvertMultiByteStringToWideString(const std::string& mString);
 
@@ -14,7 +14,7 @@ private:
 
 	void SeparateFilePath(const std::wstring& filePath);
 
-	void SaveDDSTextureToFile();
+//	void SaveDDSTextureToFile();
 
 private:
 	std::wstring directoryPath_;
