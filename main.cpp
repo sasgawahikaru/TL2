@@ -31,7 +31,7 @@ enum Argument
 
 	NumArgument
 };
-int main(int argc,char* argv[])
+int main(int argc, char* argv[])
 {
 	assert(argc >= NumArgument);
 
